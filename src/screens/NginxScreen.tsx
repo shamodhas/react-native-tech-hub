@@ -1,3 +1,4 @@
+// src/screens/NginxScreen.tsx
 import React, {useState} from 'react';
 import {
   View,
@@ -5,55 +6,43 @@ import {
   TextInput,
   Button,
   Clipboard,
+  Alert,
   StyleSheet,
-  ScrollView,
 } from 'react-native';
 
 const NginxScreen: React.FC = () => {
   const [domain, setDomain] = useState('');
-  const [root, setRoot] = useState('');
+  const [config, setConfig] = useState('');
 
-  const handleCopy = async () => {
-    const code = `server {
-      listen 80;
-      server_name ${domain};
-      root ${root};
-      index index.html;
-      
-      location / {
-        try_files \$uri \$uri/ =404;
-      }
-    }`;
-    await Clipboard.setString(code);
+  const copyToClipboard = (text: string) => {
+    Clipboard.setString(text);
+    Alert.alert('Copied to clipboard');
   };
 
   return (
-    <ScrollView contentContainerStyle={styles.container}>
+    <View style={styles.container}>
       <Text style={styles.title}>Nginx Configuration</Text>
       <TextInput
         style={styles.input}
-        placeholder="Enter Domain"
+        placeholder="Enter Domain Name"
         value={domain}
         onChangeText={setDomain}
       />
       <TextInput
         style={styles.input}
-        placeholder="Enter Root Directory"
-        value={root}
-        onChangeText={setRoot}
+        placeholder="Enter Nginx Configuration"
+        value={config}
+        onChangeText={setConfig}
       />
-      <Button title="Generate and Copy Configuration" onPress={handleCopy} />
-      <Text style={styles.code}>{`server {
-      listen 80;
-      server_name ${domain};
-      root ${root};
-      index index.html;
-      
-      location / {
-        try_files \$uri \$uri/ =404;
-      }
-    }`}</Text>
-    </ScrollView>
+      <Button
+        title="Generate Nginx Config"
+        onPress={() =>
+          copyToClipboard(
+            `server { \n\tserver_name ${domain}; \n\t${config} \n}`,
+          )
+        }
+      />
+    </View>
   );
 };
 
@@ -61,11 +50,10 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     padding: 20,
-    backgroundColor: '#fff',
+    justifyContent: 'center',
   },
   title: {
     fontSize: 24,
-    fontWeight: 'bold',
     marginBottom: 20,
   },
   input: {
@@ -74,11 +62,6 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     marginBottom: 20,
     paddingHorizontal: 10,
-  },
-  code: {
-    marginTop: 20,
-    fontFamily: 'Courier New',
-    color: '#333',
   },
 });
 

@@ -1,3 +1,4 @@
+// src/screens/GitScreen.tsx
 import React, {useState} from 'react';
 import {
   View,
@@ -5,40 +6,41 @@ import {
   TextInput,
   Button,
   Clipboard,
+  Alert,
   StyleSheet,
-  ScrollView,
 } from 'react-native';
 
 const GitScreen: React.FC = () => {
   const [url, setUrl] = useState('');
-  const [message, setMessage] = useState('');
+  const [commitMessage, setCommitMessage] = useState('');
 
-  const handleCopy = async () => {
-    const code = `git commit -m "${message}" && git push ${url}`;
-    await Clipboard.setString(code);
+  const copyToClipboard = (text: string) => {
+    Clipboard.setString(text);
+    Alert.alert('Copied to clipboard');
   };
 
   return (
-    <ScrollView contentContainerStyle={styles.container}>
-      <Text style={styles.title}>Git Commands</Text>
+    <View style={styles.container}>
+      <Text style={styles.title}>Git Operations</Text>
       <TextInput
         style={styles.input}
-        placeholder="Enter Repository URL"
+        placeholder="Enter Git URL"
         value={url}
         onChangeText={setUrl}
       />
       <TextInput
         style={styles.input}
         placeholder="Enter Commit Message"
-        value={message}
-        onChangeText={setMessage}
+        value={commitMessage}
+        onChangeText={setCommitMessage}
       />
-      <Button title="Generate and Copy Command" onPress={handleCopy} />
-      <Text
-        style={
-          styles.code
-        }>{`git commit -m "${message}" && git push ${url}`}</Text>
-    </ScrollView>
+      <Button
+        title="Generate Git Command"
+        onPress={() =>
+          copyToClipboard(`git commit -m "${commitMessage}" && git push ${url}`)
+        }
+      />
+    </View>
   );
 };
 
@@ -46,11 +48,10 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     padding: 20,
-    backgroundColor: '#fff',
+    justifyContent: 'center',
   },
   title: {
     fontSize: 24,
-    fontWeight: 'bold',
     marginBottom: 20,
   },
   input: {
@@ -59,11 +60,6 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     marginBottom: 20,
     paddingHorizontal: 10,
-  },
-  code: {
-    marginTop: 20,
-    fontFamily: 'Courier New',
-    color: '#333',
   },
 });
 
