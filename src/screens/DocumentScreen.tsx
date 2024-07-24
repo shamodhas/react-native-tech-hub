@@ -1,31 +1,43 @@
-// src/screens/DocumentScreen.tsx
 import React from 'react';
-import {View, Text, Button, StyleSheet} from 'react-native';
+import {View, Text, StyleSheet, ScrollView} from 'react-native';
+import NavigationButton from '../components/NavigationButtons';
+import {useNavigation} from '@react-navigation/native';
 
-const DocumentScreen: React.FC<{navigation: any}> = ({navigation}) => {
+const DocumentScreen: React.FC = () => {
+  const navigation = useNavigation();
+
   return (
-    <View style={styles.container}>
-      <Text style={styles.title}>Documentation</Text>
-      <Button title="Git" onPress={() => navigation.navigate('Git')} />
-      <Button title="GitHub" onPress={() => navigation.navigate('GitHub')} />
-      <Button
+    <ScrollView style={styles.container}>
+      <NavigationButton
+        title="Git"
+        onPress={() => navigation.navigate('Git')}
+      />
+      <NavigationButton
+        title="GitHub"
+        onPress={() => navigation.navigate('GitHub')}
+      />
+      <NavigationButton
         title="Ubuntu Server"
         onPress={() => navigation.navigate('UbuntuServer')}
       />
-      <Button title="Nginx" onPress={() => navigation.navigate('Nginx')} />
-    </View>
+      <NavigationButton
+        title="Nginx"
+        onPress={() => navigation.navigate('Nginx')}
+      />
+    </ScrollView>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    padding: 20,
-    justifyContent: 'center',
+    padding: 16,
+    backgroundColor: '#fff',
   },
   title: {
     fontSize: 24,
-    marginBottom: 20,
+    fontWeight: 'bold',
+    marginBottom: 12,
   },
 });
 

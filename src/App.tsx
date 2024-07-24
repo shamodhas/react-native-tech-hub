@@ -15,3 +15,6 @@ function App(): React.JSX.Element {
 }
 
 export default App;
+
+// primary color - #1F4B2C, secoun- #4D7111, third - C3E956, four- 91EAAF, five - #F4FFFC
+
