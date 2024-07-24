@@ -6,9 +6,10 @@ import {
 } from '@react-navigation/bottom-tabs';
 import Icon from 'react-native-vector-icons/Ionicons';
 import HomeScreen from '../screens/HomeScreen';
-import DocumentationStackNavigator from './DocumentationStackNavigator';
 import ProfileScreen from '../screens/ProfileScreen';
 import Colors from '../constants/Colors';
+import TechnologyStackNavigator from './TechnologiesStackNavigator';
+import SettingsScreen from '../screens/SettingsScreen';
 
 const Tab = createBottomTabNavigator();
 
@@ -21,6 +22,8 @@ const CustomTabBar: React.FC<BottomTabBarProps> = ({
     <View style={styles.container}>
       <View style={styles.tabBar}>
         {state.routes.map((route, index) => {
+          if (route.name === 'Settings') return null;
+
           const {options} = descriptors[route.key];
           const label: any =
             options.tabBarLabel !== undefined
@@ -46,9 +49,11 @@ const CustomTabBar: React.FC<BottomTabBarProps> = ({
           const iconName =
             route.name === 'Home'
               ? 'home'
-              : route.name === 'Documentation'
-              ? 'book'
-              : 'person';
+              : route.name === 'Technologies'
+              ? 'laptop-outline'
+              : route.name === 'Profile'
+              ? 'person'
+              : 'home';
 
           return (
             <TouchableOpacity
@@ -108,11 +113,13 @@ const BottomTabsNavigator: React.FC = () => {
         },
       }}>
       <Tab.Screen name="Home" component={HomeScreen} />
-      <Tab.Screen
-        name="Documentation"
-        component={DocumentationStackNavigator}
-      />
+      <Tab.Screen name="Technologies" component={TechnologyStackNavigator} />
       <Tab.Screen name="Profile" component={ProfileScreen} />
+      <Tab.Screen
+        name="Settings"
+        component={SettingsScreen}
+        options={{tabBarButton: () => null}}
+      />
     </Tab.Navigator>
   );
 };

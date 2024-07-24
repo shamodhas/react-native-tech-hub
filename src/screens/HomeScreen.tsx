@@ -10,10 +10,11 @@ import {
 } from 'react-native';
 import Colors from '../constants/Colors';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
-import {useNavigation} from '@react-navigation/native';
+import {NavigationProp, useNavigation} from '@react-navigation/native';
+import { RootStackParamList } from '../types/mainNavigationTypes';
 
 const HomeScreen: React.FC = () => {
-  const navigation = useNavigation();
+  const navigation = useNavigation<NavigationProp<RootStackParamList>>();
 
   const animatedValue = new Animated.Value(0);
 
@@ -75,9 +76,9 @@ const HomeScreen: React.FC = () => {
         <View style={styles.quickActions}>
           <TouchableOpacity
             style={styles.actionButton}
-            onPress={() => navigation.navigate('Documentation')}>
+            onPress={() => navigation.navigate('Technologies')}>
             <MaterialIcons name="book" size={30} color={Colors.background} />
-            <Text style={styles.actionText}>Documentation</Text>
+            <Text style={styles.actionText}>Technologies</Text>
           </TouchableOpacity>
           <TouchableOpacity
             style={styles.actionButton}
