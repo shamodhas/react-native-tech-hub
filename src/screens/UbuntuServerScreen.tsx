@@ -9,167 +9,33 @@ import {
 import Colors from '../constants/Colors';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 
-const UbuntuScreen: React.FC = () => {
+const UbuntuServerScreen: React.FC = () => {
   return (
     <ScrollView contentContainerStyle={styles.container}>
-      <Text style={styles.title}>Ubuntu</Text>
-
+      <Text style={styles.title}>Ubuntu Server</Text>
       <View style={styles.section}>
         <Text style={styles.subtitle}>Overview</Text>
         <Text style={styles.text}>
-          Ubuntu is a popular open-source operating system based on Debian. It
-          is widely used for both personal computing and server environments,
-          offering a user-friendly interface and a strong focus on security and
-          stability.
+          Ubuntu Server is a server operating system that is free and
+          open-source. It is designed for running servers and providing services
+          such as web hosting, database management, and more.
         </Text>
       </View>
-
       <View style={styles.section}>
         <Text style={styles.subtitle}>How to Use It</Text>
-
-        <View style={styles.stepContainer}>
-          <View style={styles.stepHeader}>
-            <Text style={styles.stepNumber}>1.</Text>
-            <Text style={styles.bold}>Update and Upgrade:</Text>
-          </View>
-          <View style={styles.inlineCodeWrapper}>
-            <View style={styles.inlineCodeContainer}>
-              <Text style={styles.inlineCode}>sudo apt-get update</Text>
-            </View>
-            <TouchableOpacity style={styles.copyButton}>
-              <MaterialIcons
-                name="content-copy"
-                size={20}
-                color={Colors.primary}
-              />
-            </TouchableOpacity>
-          </View>
-          <Text>to update the package list.</Text>
-
-          <View style={styles.inlineCodeWrapper}>
-            <View style={styles.inlineCodeContainer}>
-              <Text style={styles.inlineCode}>sudo apt-get upgrade</Text>
-            </View>
-            <TouchableOpacity style={styles.copyButton}>
-              <MaterialIcons
-                name="content-copy"
-                size={20}
-                color={Colors.primary}
-              />
-            </TouchableOpacity>
-          </View>
-          <Text>to upgrade all the packages.</Text>
-        </View>
-
-        <View style={styles.stepContainer}>
-          <View style={styles.stepHeader}>
-            <Text style={styles.stepNumber}>2.</Text>
-            <Text style={styles.bold}>Install a Package:</Text>
-          </View>
-          <View style={styles.inlineCodeWrapper}>
-            <View style={styles.inlineCodeContainer}>
-              <Text style={styles.inlineCode}>
-                sudo apt-get install &lt;package&gt;
-              </Text>
-            </View>
-            <TouchableOpacity style={styles.copyButton}>
-              <MaterialIcons
-                name="content-copy"
-                size={20}
-                color={Colors.primary}
-              />
-            </TouchableOpacity>
-          </View>
-          <Text>to install a specific package.</Text>
-        </View>
-
-        <View style={styles.stepContainer}>
-          <View style={styles.stepHeader}>
-            <Text style={styles.stepNumber}>3.</Text>
-            <Text style={styles.bold}>Remove a Package:</Text>
-          </View>
-          <View style={styles.inlineCodeWrapper}>
-            <View style={styles.inlineCodeContainer}>
-              <Text style={styles.inlineCode}>
-                sudo apt-get remove &lt;package&gt;
-              </Text>
-            </View>
-            <TouchableOpacity style={styles.copyButton}>
-              <MaterialIcons
-                name="content-copy"
-                size={20}
-                color={Colors.primary}
-              />
-            </TouchableOpacity>
-          </View>
-          <Text>to remove a specific package.</Text>
-        </View>
-
-        <View style={styles.stepContainer}>
-          <View style={styles.stepHeader}>
-            <Text style={styles.stepNumber}>4.</Text>
-            <Text style={styles.bold}>Search for Packages:</Text>
-          </View>
-          <View style={styles.inlineCodeWrapper}>
-            <View style={styles.inlineCodeContainer}>
-              <Text style={styles.inlineCode}>
-                apt-cache search &lt;term&gt;
-              </Text>
-            </View>
-            <TouchableOpacity style={styles.copyButton}>
-              <MaterialIcons
-                name="content-copy"
-                size={20}
-                color={Colors.primary}
-              />
-            </TouchableOpacity>
-          </View>
-          <Text>to search for packages related to a specific term.</Text>
-        </View>
+        {/* Steps similar to GitScreen */}
       </View>
-
       <View style={styles.section}>
         <Text style={styles.subtitle}>How It Works</Text>
         <Text style={styles.text}>
-          Ubuntu uses the Advanced Package Tool (APT) for managing software
-          packages. APT provides a straightforward way to install, update, and
-          remove packages, ensuring that your system is up to date and secure.
+          Ubuntu Server provides a robust and scalable platform for hosting
+          applications and services. It supports various software packages and
+          frameworks.
         </Text>
       </View>
-
       <View style={styles.section}>
         <Text style={styles.subtitle}>Sample Exercises</Text>
-        <View style={styles.stepContainer}>
-          <View style={styles.stepHeader}>
-            <Text style={styles.stepNumber}>1.</Text>
-            <Text style={styles.bold}>Update and Upgrade:</Text>
-          </View>
-          <Text>Update the package list and upgrade installed packages.</Text>
-        </View>
-
-        <View style={styles.stepContainer}>
-          <View style={styles.stepHeader}>
-            <Text style={styles.stepNumber}>2.</Text>
-            <Text style={styles.bold}>Install a Package:</Text>
-          </View>
-          <Text>Install a package of your choice.</Text>
-        </View>
-
-        <View style={styles.stepContainer}>
-          <View style={styles.stepHeader}>
-            <Text style={styles.stepNumber}>3.</Text>
-            <Text style={styles.bold}>Remove a Package:</Text>
-          </View>
-          <Text>Remove an installed package.</Text>
-        </View>
-
-        <View style={styles.stepContainer}>
-          <View style={styles.stepHeader}>
-            <Text style={styles.stepNumber}>4.</Text>
-            <Text style={styles.bold}>Search for Packages:</Text>
-          </View>
-          <Text>Search for packages related to a specific term.</Text>
-        </View>
+        {/* Exercises similar to GitScreen */}
       </View>
     </ScrollView>
   );
@@ -180,6 +46,7 @@ const styles = StyleSheet.create({
     flexGrow: 1,
     padding: 16,
     backgroundColor: Colors.background,
+    paddingBottom: 100,
   },
   title: {
     fontSize: 26,
@@ -237,14 +104,13 @@ const styles = StyleSheet.create({
     borderRadius: 8,
     paddingHorizontal: 8,
     paddingVertical: 4,
-    marginRight: 8, // Margin to the right of the code container
+    marginRight: 8,
     flex: 1,
   },
   inlineCode: {
     fontFamily: 'Courier New',
     color: Colors.background,
     fontSize: 16,
-    // textAlign: 'center',
     letterSpacing: 0.5,
   },
   copyButton: {
@@ -252,4 +118,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default UbuntuScreen;
+export default UbuntuServerScreen;

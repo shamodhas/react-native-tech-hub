@@ -5,6 +5,8 @@ const Colors = {
   textSecondary: '#91EAAF',
   background: '#F4FFFC',
   backgroundSecondary: '#F4FFFC',
+  light: '#dfffe8',
+  lightDim: '#b4ffca',
 };
 
 export default Colors;

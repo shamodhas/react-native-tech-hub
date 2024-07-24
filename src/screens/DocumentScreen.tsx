@@ -7,6 +7,7 @@ import {
   TouchableOpacity,
   Dimensions,
   TextInput,
+  ScrollView,
 } from 'react-native';
 import Colors from '../constants/Colors';
 import Icon from 'react-native-vector-icons/Ionicons';
@@ -21,7 +22,7 @@ const DocumentScreen: React.FC = ({navigation}: any) => {
   );
 
   return (
-    <View style={styles.container}>
+    <ScrollView style={styles.container}>
       <Text style={styles.title}>Explore Technologies</Text>
       <TextInput
         style={styles.searchInput}
@@ -36,7 +37,7 @@ const DocumentScreen: React.FC = ({navigation}: any) => {
             style={styles.card}
             onPress={() => navigation.navigate(item.route)}
             activeOpacity={0.9}>
-            <Icon name={item.icon} size={48} color={Colors.primary} />
+            <Icon name={item.icon} size={48} color={'#fff'} />
             <Text style={styles.cardText}>{item.name}</Text>
           </TouchableOpacity>
         )}
@@ -44,7 +45,7 @@ const DocumentScreen: React.FC = ({navigation}: any) => {
         numColumns={2}
         contentContainerStyle={styles.grid}
       />
-    </View>
+    </ScrollView>
   );
 };
 

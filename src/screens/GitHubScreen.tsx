@@ -13,27 +13,32 @@ const GitHubScreen: React.FC = () => {
   return (
     <ScrollView contentContainerStyle={styles.container}>
       <Text style={styles.title}>GitHub</Text>
-
       <View style={styles.section}>
         <Text style={styles.subtitle}>Overview</Text>
         <Text style={styles.text}>
           GitHub is a web-based platform for version control and collaboration
-          using Git. It allows developers to host and review code, manage
-          projects, and build software alongside millions of other developers.
+          using Git. It provides hosting for software development and version
+          control using Git, along with additional features such as issue
+          tracking, project management, and a collaborative environment.
         </Text>
       </View>
-
       <View style={styles.section}>
         <Text style={styles.subtitle}>How to Use It</Text>
-
         <View style={styles.stepContainer}>
           <View style={styles.stepHeader}>
             <Text style={styles.stepNumber}>1.</Text>
-            <Text style={styles.bold}>Create a Repository:</Text>
+            <Text style={styles.bold}>Create a GitHub Account:</Text>
+            <Text style={styles.text}>
+              {' '}
+              Go to <Text style={styles.inlineCode}>
+                https://github.com/
+              </Text>{' '}
+              and sign up for an account.
+            </Text>
           </View>
           <View style={styles.inlineCodeWrapper}>
             <View style={styles.inlineCodeContainer}>
-              <Text style={styles.inlineCode}>git init</Text>
+              <Text style={styles.inlineCode}>https://github.com/</Text>
             </View>
             <TouchableOpacity style={styles.copyButton}>
               <MaterialIcons
@@ -43,61 +48,36 @@ const GitHubScreen: React.FC = () => {
               />
             </TouchableOpacity>
           </View>
-          <Text>Initialize a new Git repository.</Text>
         </View>
-
         <View style={styles.stepContainer}>
           <View style={styles.stepHeader}>
             <Text style={styles.stepNumber}>2.</Text>
-            <Text style={styles.bold}>Clone a Repository:</Text>
+            <Text style={styles.bold}>Create a Repository:</Text>
+            <Text style={styles.text}>
+              {' '}
+              Click the '+' icon on the top-right corner and select 'New
+              repository'. Fill in the details and click 'Create repository'.
+            </Text>
           </View>
-          <View style={styles.inlineCodeWrapper}>
-            <View style={styles.inlineCodeContainer}>
-              <Text style={styles.inlineCode}>
-                git clone &lt;repository&gt;
-              </Text>
-            </View>
-            <TouchableOpacity style={styles.copyButton}>
-              <MaterialIcons
-                name="content-copy"
-                size={20}
-                color={Colors.primary}
-              />
-            </TouchableOpacity>
-          </View>
-          <Text>Clone a repository to your local machine.</Text>
         </View>
-
         <View style={styles.stepContainer}>
           <View style={styles.stepHeader}>
             <Text style={styles.stepNumber}>3.</Text>
-            <Text style={styles.bold}>Commit Changes:</Text>
-          </View>
-          <View style={styles.inlineCodeWrapper}>
-            <View style={styles.inlineCodeContainer}>
-              <Text style={styles.inlineCode}>git commit -m "message"</Text>
-            </View>
-            <TouchableOpacity style={styles.copyButton}>
-              <MaterialIcons
-                name="content-copy"
-                size={20}
-                color={Colors.primary}
-              />
-            </TouchableOpacity>
-          </View>
-          <Text>Commit staged changes with a message.</Text>
-        </View>
-
-        <View style={styles.stepContainer}>
-          <View style={styles.stepHeader}>
-            <Text style={styles.stepNumber}>4.</Text>
-            <Text style={styles.bold}>Push to Remote:</Text>
-          </View>
-          <View style={styles.inlineCodeWrapper}>
-            <View style={styles.inlineCodeContainer}>
+            <Text style={styles.bold}>Push Local Changes:</Text>
+            <Text style={styles.text}>
+              {' '}
+              Add your local repository to GitHub by running{' '}
               <Text style={styles.inlineCode}>
-                git push origin &lt;branch&gt;
-              </Text>
+                git remote add origin [URL]
+              </Text>{' '}
+              and then push using{' '}
+              <Text style={styles.inlineCode}>git push -u origin main</Text>.
+            </Text>
+          </View>
+          <View style={styles.inlineCodeWrapper}>
+            <View style={styles.inlineCodeContainer}>
+              <Text style={styles.inlineCode}>git remote add origin [URL]</Text>
+              <Text style={styles.inlineCode}>git push -u origin main</Text>
             </View>
             <TouchableOpacity style={styles.copyButton}>
               <MaterialIcons
@@ -107,51 +87,38 @@ const GitHubScreen: React.FC = () => {
               />
             </TouchableOpacity>
           </View>
-          <Text>Push changes to a remote repository.</Text>
         </View>
       </View>
-
       <View style={styles.section}>
         <Text style={styles.subtitle}>How It Works</Text>
         <Text style={styles.text}>
-          GitHub leverages Git for version control, providing a web interface
-          for Git repositories. It allows for code review, project management,
-          and continuous integration and deployment.
+          GitHub uses Git for version control and adds a web-based interface
+          with additional features. You can create repositories to store your
+          code, collaborate with others, and track issues. GitHub also
+          integrates with many tools and services to enhance development
+          workflows.
         </Text>
       </View>
-
       <View style={styles.section}>
         <Text style={styles.subtitle}>Sample Exercises</Text>
         <View style={styles.stepContainer}>
-          <View style={styles.stepHeader}>
-            <Text style={styles.stepNumber}>1.</Text>
-            <Text style={styles.bold}>Fork a Repository:</Text>
-          </View>
-          <Text>Fork a repository and clone it to your local machine.</Text>
+          <Text style={styles.stepNumber}>1.</Text>
+          <Text style={styles.text}>
+            Create a GitHub repository and push a local project to it.
+          </Text>
         </View>
-
         <View style={styles.stepContainer}>
-          <View style={styles.stepHeader}>
-            <Text style={styles.stepNumber}>2.</Text>
-            <Text style={styles.bold}>Create a Pull Request:</Text>
-          </View>
-          <Text>Create a pull request to contribute to a repository.</Text>
+          <Text style={styles.stepNumber}>2.</Text>
+          <Text style={styles.text}>
+            Collaborate with a teammate by forking a repository and submitting a
+            pull request.
+          </Text>
         </View>
-
         <View style={styles.stepContainer}>
-          <View style={styles.stepHeader}>
-            <Text style={styles.stepNumber}>3.</Text>
-            <Text style={styles.bold}>Merge Changes:</Text>
-          </View>
-          <Text>Merge changes from a pull request into the main branch.</Text>
-        </View>
-
-        <View style={styles.stepContainer}>
-          <View style={styles.stepHeader}>
-            <Text style={styles.stepNumber}>4.</Text>
-            <Text style={styles.bold}>Resolve Conflicts:</Text>
-          </View>
-          <Text>Resolve conflicts in a pull request.</Text>
+          <Text style={styles.stepNumber}>3.</Text>
+          <Text style={styles.text}>
+            Use GitHub Issues to track tasks and bugs in a project.
+          </Text>
         </View>
       </View>
     </ScrollView>
@@ -163,6 +130,7 @@ const styles = StyleSheet.create({
     flexGrow: 1,
     padding: 16,
     backgroundColor: Colors.background,
+    paddingBottom: 100,
   },
   title: {
     fontSize: 26,
@@ -220,14 +188,13 @@ const styles = StyleSheet.create({
     borderRadius: 8,
     paddingHorizontal: 8,
     paddingVertical: 4,
-    marginRight: 8, // Margin to the right of the code container
+    marginRight: 8,
     flex: 1,
   },
   inlineCode: {
     fontFamily: 'Courier New',
     color: Colors.background,
     fontSize: 16,
-    // textAlign: 'center',
     letterSpacing: 0.5,
   },
   copyButton: {
