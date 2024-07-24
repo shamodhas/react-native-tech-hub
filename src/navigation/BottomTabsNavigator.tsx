@@ -59,7 +59,7 @@ const CustomTabBar: React.FC<BottomTabBarProps> = ({
               <View
                 style={[
                   styles.iconContainer,
-                  // isFocused && styles.activeIconContainer,
+                  isFocused && styles.activeIconContainer,
                 ]}>
                 <Icon
                   name={iconName}
@@ -67,14 +67,15 @@ const CustomTabBar: React.FC<BottomTabBarProps> = ({
                   color={isFocused ? Colors.background : Colors.textSecondary}
                   style={styles.icon}
                 />
-              </View>
-              {isFocused && (
-                <View>
-                  <Text style={[styles.label, styles.focusedLabel]}>
+                {isFocused && (
+                  <Text
+                    style={[styles.label]}
+                    numberOfLines={1}
+                    ellipsizeMode="tail">
                     {label}
                   </Text>
-                </View>
-              )}
+                )}
+              </View>
             </TouchableOpacity>
           );
         })}
@@ -145,23 +146,24 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   iconContainer: {
-    width: 40,
-    height: 40,
-    borderRadius: 20,
     justifyContent: 'center',
     alignItems: 'center',
   },
   activeIconContainer: {
+    flexDirection: 'row',
+    gap: 10,
+    justifyContent: 'center',
+    alignItems: 'center',
     backgroundColor: Colors.secondary,
+    paddingVertical: 5,
+    paddingHorizontal: 15,
+    borderRadius: 20,
   },
   icon: {
     marginBottom: 4,
   },
   label: {
     fontSize: 12,
-    color: Colors.textSecondary,
-  },
-  focusedLabel: {
     color: Colors.background,
   },
 });

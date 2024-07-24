@@ -15,7 +15,6 @@ import {useNavigation} from '@react-navigation/native';
 const HomeScreen: React.FC = () => {
   const navigation = useNavigation();
 
-  // Animation values for featured items
   const animatedValue = new Animated.Value(0);
 
   React.useEffect(() => {
@@ -154,6 +153,7 @@ const styles = StyleSheet.create({
     flexGrow: 1,
     padding: 16,
     backgroundColor: Colors.background,
+    paddingBottom: 100,
   },
   header: {
     marginBottom: 24,
