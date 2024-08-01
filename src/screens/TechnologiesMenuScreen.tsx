@@ -72,7 +72,7 @@ const styles = StyleSheet.create({
     resizeMode: 'contain',
   },
   imageWrapper: {
-    backgroundColor: '#fff',
+    backgroundColor: Colors.background,
     padding: 8,
     borderRadius: 16,
   },
