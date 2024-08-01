@@ -64,25 +64,19 @@ const CustomTabBar: React.FC<BottomTabBarProps> = ({
             onPress={onPress}
             style={styles.tab}
             activeOpacity={0.8}>
-            <View
-              style={[
-                styles.iconContainer,
-                isFocused && styles.activeIconContainer,
-              ]}>
+            <View style={[styles.iconContainer]}>
               <Icon
                 name={iconName}
                 size={26}
-                color={isFocused ? Colors.background : Colors.textSecondary}
+                color={isFocused ? Colors.primary : Colors.accent}
                 style={styles.icon}
               />
-              {isFocused && (
-                <Text
-                  style={[styles.label]}
-                  numberOfLines={1}
-                  ellipsizeMode="tail">
-                  {label}
-                </Text>
-              )}
+              <Text
+                style={isFocused ? styles.lableActive : styles.label}
+                numberOfLines={1}
+                ellipsizeMode="tail">
+                {label}
+              </Text>
             </View>
           </TouchableOpacity>
         );
@@ -98,7 +92,7 @@ const BottomTabsNavigator: React.FC = () => {
       screenOptions={{
         headerShown: false,
         tabBarActiveTintColor: Colors.primary,
-        tabBarInactiveTintColor: Colors.textSecondary,
+        tabBarInactiveTintColor: Colors.accent,
         tabBarStyle: {
           backgroundColor: '#FFFFFF',
           borderTopWidth: 0,
@@ -130,7 +124,9 @@ const styles = StyleSheet.create({
     height: 70,
     alignItems: 'center',
     justifyContent: 'space-around',
-    backgroundColor: '#1E1E1E',
+    backgroundColor: '#FFFFFF',
+    borderWidth: 1,
+    borderColor: '#AEAEAE',
   },
   tab: {
     flex: 1,
@@ -141,22 +137,16 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
-  activeIconContainer: {
-    flexDirection: 'row',
-    gap: 10,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: Colors.secondary,
-    paddingVertical: 5,
-    paddingHorizontal: 15,
-    borderRadius: 20,
-  },
   icon: {
     marginBottom: 4,
   },
   label: {
     fontSize: 12,
-    color: Colors.background,
+    color: Colors.accent,
+  },
+  lableActive: {
+    fontSize: 12,
+    color: Colors.primary,
   },
 });
 

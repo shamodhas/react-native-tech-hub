@@ -3,15 +3,14 @@ import {
   View,
   Text,
   StyleSheet,
-  Dimensions,
   TextInput,
   TouchableOpacity,
   ScrollView,
   Image,
 } from 'react-native';
 import Colors from '../constants/Colors';
-import Icon from 'react-native-vector-icons/Ionicons';
 import {technologyRoutes} from '../navigation/routes/technologyRoutes';
+import TechnologyCard from '../components/TechnologyCard';
 
 const TechnologiesMenuScreen: React.FC = ({navigation}: any) => {
   const [search, setSearch] = useState('');
@@ -20,24 +19,17 @@ const TechnologiesMenuScreen: React.FC = ({navigation}: any) => {
     tech.name.toLowerCase().includes(search.toLowerCase()),
   );
 
-  const renderIcon = (item: any) => {
-    if (item.icon) {
-      return <Icon name={item.icon} size={48} color={'#fff'} />;
-    } else if (item.image) {
-      return <Image source={item.image} style={styles.image} />;
-    }
-    return null;
-  };
-
   return (
     <ScrollView style={styles.container}>
-      <Text style={styles.title}>Explore Technologies</Text>
-      <TextInput
-        style={styles.searchInput}
-        placeholder="Search technologies..."
-        value={search}
-        onChangeText={setSearch}
-      />
+      <View style={styles.header}>
+        <Text style={styles.title}>Explore Technologies</Text>
+        <TextInput
+          style={styles.searchInput}
+          placeholder="Search technologies..."
+          value={search}
+          onChangeText={setSearch}
+        />
+      </View>
       <View style={styles.grid}>
         {filteredTechnologies.map((item: any) => (
           <TouchableOpacity
@@ -49,10 +41,7 @@ const TechnologiesMenuScreen: React.FC = ({navigation}: any) => {
               })
             }
             activeOpacity={0.9}>
-            <View style={styles.imageWrapper}>
-              <Image source={item.image} style={styles.image} />
-            </View>
-            <Text style={styles.cardText}>{item.name}</Text>
+            <TechnologyCard image={item.image} title={item.name} />
           </TouchableOpacity>
         ))}
       </View>
@@ -63,18 +52,18 @@ const TechnologiesMenuScreen: React.FC = ({navigation}: any) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: Colors.background,
-    padding: 20,
+  },
+  header: {
+    paddingHorizontal: 20,
+    paddingVertical: 5,
+    backgroundColor: '#fff',
+    borderBottomWidth: 1,
+    borderColor: Colors.accent,
   },
   image: {
     width: 80,
     height: 80,
     resizeMode: 'contain',
-  },
-  imageWrapper: {
-    backgroundColor: Colors.background,
-    padding: 8,
-    borderRadius: 16,
   },
   title: {
     fontSize: 32,
@@ -91,19 +80,19 @@ const styles = StyleSheet.create({
     paddingHorizontal: 10,
     marginBottom: 20,
     fontSize: 16,
-    color: Colors.textPrimary,
+    color: '#000',
   },
   grid: {
     flexDirection: 'row',
     flexWrap: 'wrap',
     justifyContent: 'space-between',
     marginBottom: 50,
+    padding: 20,
   },
   card: {
     width: '48%',
+    height: 150,
     marginBottom: 10,
-    padding: 20,
-    backgroundColor: Colors.secondary,
     borderRadius: 16,
     alignItems: 'center',
     justifyContent: 'center',
@@ -112,12 +101,6 @@ const styles = StyleSheet.create({
     shadowOffset: {width: 0, height: 6},
     shadowOpacity: 0.2,
     shadowRadius: 8,
-  },
-  cardText: {
-    marginTop: 10,
-    fontSize: 18,
-    fontWeight: '600',
-    color: Colors.textPrimary,
   },
 });
 
