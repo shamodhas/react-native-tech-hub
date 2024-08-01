@@ -10,25 +10,24 @@ const UbuntuServerScreen: React.FC = () => {
 
   return (
     <ScrollView contentContainerStyle={styles.container}>
-      <Text style={styles.title}>Ubuntu Server - not finalized</Text>
-
       <View style={styles.section}>
-        <Text style={styles.subtitle}>Overview</Text>
+        <Text style={styles.subtitle}>Introduction</Text>
         <Text style={styles.text}>
-          Ubuntu Server is a free, open-source operating system that is widely
-          used for web hosting, cloud computing, and various server-related
-          tasks. It is based on Debian and known for its robustness and ease of
-          use.
+          Ubuntu Server is a popular choice for web hosting and server
+          management due to its stability, security, and ease of use. It is an
+          open-source operating system based on Debian, providing a robust
+          platform for various server-related tasks including web hosting, cloud
+          services, and more.
         </Text>
       </View>
 
       <View style={styles.section}>
-        <Text style={styles.subtitle}>How to Use It</Text>
+        <Text style={styles.subtitle}>Basic Setup</Text>
 
         <View style={styles.stepContainer}>
           <View style={styles.stepHeader}>
             <Text style={styles.stepNumber}>1.</Text>
-            <Text style={styles.bold}>Update Packages:</Text>
+            <Text style={styles.bold}>Update System:</Text>
           </View>
           <CodeSnippet
             code="sudo apt update && sudo apt upgrade"
@@ -36,7 +35,10 @@ const UbuntuServerScreen: React.FC = () => {
               copyToClipboard('sudo apt update && sudo apt upgrade')
             }
           />
-          <Text>Update the package lists and upgrade installed packages.</Text>
+          <Text>
+            Update the package list and upgrade all installed packages to their
+            latest versions.
+          </Text>
         </View>
 
         <View style={styles.stepContainer}>
@@ -48,7 +50,7 @@ const UbuntuServerScreen: React.FC = () => {
             code="sudo apt install apache2"
             onCopy={() => copyToClipboard('sudo apt install apache2')}
           />
-          <Text>Install the Apache web server.</Text>
+          <Text>Install the Apache web server to serve web pages.</Text>
         </View>
 
         <View style={styles.stepContainer}>
@@ -60,7 +62,9 @@ const UbuntuServerScreen: React.FC = () => {
             code="sudo systemctl start apache2"
             onCopy={() => copyToClipboard('sudo systemctl start apache2')}
           />
-          <Text>Start the Apache service.</Text>
+          <Text>
+            Start the Apache service so it begins serving web content.
+          </Text>
         </View>
 
         <View style={styles.stepContainer}>
@@ -72,37 +76,29 @@ const UbuntuServerScreen: React.FC = () => {
             code="sudo systemctl enable apache2"
             onCopy={() => copyToClipboard('sudo systemctl enable apache2')}
           />
-          <Text>Enable Apache to start on boot.</Text>
+          <Text>Configure Apache to start automatically on system boot.</Text>
         </View>
       </View>
 
       <View style={styles.section}>
-        <Text style={styles.subtitle}>How It Works</Text>
-        <Text style={styles.text}>
-          Ubuntu Server provides a stable and secure environment for running
-          applications and services. It uses the APT package manager to
-          facilitate software installation and management.
-        </Text>
-      </View>
+        <Text style={styles.subtitle}>Intermediate Configuration</Text>
 
-      <View style={styles.section}>
-        <Text style={styles.subtitle}>Sample Exercises</Text>
         <View style={styles.stepContainer}>
           <View style={styles.stepHeader}>
-            <Text style={styles.stepNumber}>1.</Text>
-            <Text style={styles.bold}>Configure a Firewall:</Text>
+            <Text style={styles.stepNumber}>5.</Text>
+            <Text style={styles.bold}>Configure Firewall:</Text>
           </View>
           <CodeSnippet
             code="sudo ufw allow 'Apache Full'"
-            onCopy={() => copyToClipboard('sudo ufw allow Apache Full')}
+            onCopy={() => copyToClipboard("sudo ufw allow 'Apache Full'")}
           />
-          <Text>Allow Apache traffic through the firewall.</Text>
+          <Text>Set up the firewall to allow traffic for Apache services.</Text>
         </View>
 
         <View style={styles.stepContainer}>
           <View style={styles.stepHeader}>
-            <Text style={styles.stepNumber}>2.</Text>
-            <Text style={styles.bold}>Create a Virtual Host:</Text>
+            <Text style={styles.stepNumber}>6.</Text>
+            <Text style={styles.bold}>Create Virtual Host:</Text>
           </View>
           <CodeSnippet
             code="sudo nano /etc/apache2/sites-available/example.com.conf"
@@ -112,31 +108,124 @@ const UbuntuServerScreen: React.FC = () => {
               )
             }
           />
-          <Text>Create a virtual host configuration file.</Text>
+          <Text>Set up a virtual host configuration file for your domain.</Text>
         </View>
 
         <View style={styles.stepContainer}>
           <View style={styles.stepHeader}>
-            <Text style={styles.stepNumber}>3.</Text>
-            <Text style={styles.bold}>Enable the Site:</Text>
+            <Text style={styles.stepNumber}>7.</Text>
+            <Text style={styles.bold}>Enable Virtual Host:</Text>
           </View>
           <CodeSnippet
             code="sudo a2ensite example.com.conf"
             onCopy={() => copyToClipboard('sudo a2ensite example.com.conf')}
           />
-          <Text>Enable the new site configuration.</Text>
+          <Text>Activate the virtual host configuration you created.</Text>
         </View>
 
         <View style={styles.stepContainer}>
           <View style={styles.stepHeader}>
-            <Text style={styles.stepNumber}>4.</Text>
+            <Text style={styles.stepNumber}>8.</Text>
             <Text style={styles.bold}>Reload Apache:</Text>
           </View>
           <CodeSnippet
             code="sudo systemctl reload apache2"
             onCopy={() => copyToClipboard('sudo systemctl reload apache2')}
           />
-          <Text>Reload Apache to apply changes.</Text>
+          <Text>Apply changes by reloading the Apache service.</Text>
+        </View>
+      </View>
+
+      <View style={styles.section}>
+        <Text style={styles.subtitle}>Advanced Features</Text>
+
+        <View style={styles.stepContainer}>
+          <View style={styles.stepHeader}>
+            <Text style={styles.stepNumber}>9.</Text>
+            <Text style={styles.bold}>Manage Users and Permissions:</Text>
+          </View>
+          <CodeSnippet
+            code="sudo adduser <username>\nsudo usermod -aG sudo <username>"
+            onCopy={() =>
+              copyToClipboard(
+                'sudo adduser <username>\nsudo usermod -aG sudo <username>',
+              )
+            }
+          />
+          <Text>Add a new user and grant administrative privileges.</Text>
+        </View>
+
+        <View style={styles.stepContainer}>
+          <View style={styles.stepHeader}>
+            <Text style={styles.stepNumber}>10.</Text>
+            <Text style={styles.bold}>Set Up Automated Backups:</Text>
+          </View>
+          <CodeSnippet
+            code="sudo apt install rsync\nrsync -av --delete /source/directory /backup/directory"
+            onCopy={() =>
+              copyToClipboard(
+                'sudo apt install rsync\nrsync -av --delete /source/directory /backup/directory',
+              )
+            }
+          />
+          <Text>
+            Install rsync and set up a backup schedule for your files.
+          </Text>
+        </View>
+      </View>
+
+      <View style={styles.section}>
+        <Text style={styles.subtitle}>Sample Exercises</Text>
+
+        <View style={styles.stepContainer}>
+          <View style={styles.stepHeader}>
+            <Text style={styles.stepNumber}>1.</Text>
+            <Text style={styles.bold}>Configure SSL for Apache:</Text>
+          </View>
+          <CodeSnippet
+            code="sudo apt install certbot python3-certbot-apache\nsudo certbot --apache"
+            onCopy={() =>
+              copyToClipboard(
+                'sudo apt install certbot python3-certbot-apache\nsudo certbot --apache',
+              )
+            }
+          />
+          <Text>Set up SSL certificates and configure Apache for HTTPS.</Text>
+        </View>
+
+        <View style={styles.stepContainer}>
+          <View style={styles.stepHeader}>
+            <Text style={styles.stepNumber}>2.</Text>
+            <Text style={styles.bold}>Install and Configure MySQL:</Text>
+          </View>
+          <CodeSnippet
+            code="sudo apt install mysql-server\nsudo mysql_secure_installation"
+            onCopy={() =>
+              copyToClipboard(
+                'sudo apt install mysql-server\nsudo mysql_secure_installation',
+              )
+            }
+          />
+          <Text>Install MySQL server and secure your installation.</Text>
+        </View>
+
+        <View style={styles.stepContainer}>
+          <View style={styles.stepHeader}>
+            <Text style={styles.stepNumber}>3.</Text>
+            <Text style={styles.bold}>Deploy a Sample Application:</Text>
+          </View>
+          <CodeSnippet
+            code="sudo git clone <repo-url>\nsudo cp -r <app-directory> /var/www/html/"
+            onCopy={() =>
+              copyToClipboard(
+                'sudo git clone <repo-url>\nsudo cp -r <app-directory> /var/www/html/',
+              )
+            }
+          />
+          <Text>
+            Clone a repository and deploy a sample application to your web
+            server.
+          </Text>
         </View>
       </View>
     </ScrollView>

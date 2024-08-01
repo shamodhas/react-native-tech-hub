@@ -10,8 +10,11 @@ import {
 } from 'react-native';
 import Colors from '../constants/Colors';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
+import {useNavigation} from '@react-navigation/native';
 
 const ProfileScreen: React.FC = () => {
+  const navigation = useNavigation<any>();
+
   const user = {
     name: 'Shamodha Sahan',
     email: 'shamodha7@gmail.com',
@@ -24,7 +27,12 @@ const ProfileScreen: React.FC = () => {
       'Are you sure you want to log out?',
       [
         {text: 'Cancel', style: 'cancel'},
-        {text: 'Log Out', onPress: () => console.log('Logged out')},
+        {
+          text: 'Log Out',
+          onPress: () => {
+            navigation.navigate('Login');
+          },
+        },
       ],
       {cancelable: false},
     );

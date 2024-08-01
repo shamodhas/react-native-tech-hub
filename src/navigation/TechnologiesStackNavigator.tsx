@@ -1,8 +1,9 @@
-import React, {Suspense} from 'react';
+import React from 'react';
 import {createStackNavigator} from '@react-navigation/stack';
-import {technologyRoutes} from './routes/technologyRoutes';
 import LazyLoadComponent from '../components/LazyLoadComponent';
 import TechnologiesMenuScreen from '../screens/TechnologiesMenuScreen';
+import {technologyRoutes} from './routes/technologyRoutes';
+import TechnologyScreenLayout from '../components/layout/TechnologyScreenLayout';
 
 const Stack = createStackNavigator();
 
@@ -10,22 +11,25 @@ const TechnologiesStackNavigator: React.FC = () => {
   return (
     <Stack.Navigator
       initialRouteName="Technologies"
-      screenOptions={{headerShown: false}}>
+      screenOptions={{
+        headerShown: false,
+        gestureEnabled: true,
+        gestureDirection: 'horizontal',
+      }}>
       <Stack.Screen
         key="Technologies"
         name="Technologies"
         component={TechnologiesMenuScreen}
       />
-      {technologyRoutes.map(({route, component: Component}) => (
+      {technologyRoutes.map(({name, route, component: Component, image}) => (
         <Stack.Screen
           key={route}
           name={route}
-          component={
-            Component
-            //   (props: any) => (
-            //   <LazyLoadComponent Component={Component} {...props} />
-            // )
-          }
+          children={(props: any) => (
+            <TechnologyScreenLayout title={name} image={image} {...props}>
+              <LazyLoadComponent Component={Component} {...props} />
+            </TechnologyScreenLayout>
+          )}
         />
       ))}
     </Stack.Navigator>

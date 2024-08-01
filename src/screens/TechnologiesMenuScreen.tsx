@@ -7,19 +7,27 @@ import {
   TextInput,
   TouchableOpacity,
   ScrollView,
+  Image,
 } from 'react-native';
 import Colors from '../constants/Colors';
 import Icon from 'react-native-vector-icons/Ionicons';
 import {technologyRoutes} from '../navigation/routes/technologyRoutes';
 
-const {width} = Dimensions.get('window');
-
 const TechnologiesMenuScreen: React.FC = ({navigation}: any) => {
   const [search, setSearch] = useState('');
 
-  const filteredTechnologies = technologyRoutes.filter(tech =>
+  const filteredTechnologies = technologyRoutes.filter((tech: any) =>
     tech.name.toLowerCase().includes(search.toLowerCase()),
   );
+
+  const renderIcon = (item: any) => {
+    if (item.icon) {
+      return <Icon name={item.icon} size={48} color={'#fff'} />;
+    } else if (item.image) {
+      return <Image source={item.image} style={styles.image} />;
+    }
+    return null;
+  };
 
   return (
     <ScrollView style={styles.container}>
@@ -31,7 +39,7 @@ const TechnologiesMenuScreen: React.FC = ({navigation}: any) => {
         onChangeText={setSearch}
       />
       <View style={styles.grid}>
-        {filteredTechnologies.map(item => (
+        {filteredTechnologies.map((item: any) => (
           <TouchableOpacity
             key={item.route}
             style={styles.card}
@@ -41,7 +49,9 @@ const TechnologiesMenuScreen: React.FC = ({navigation}: any) => {
               })
             }
             activeOpacity={0.9}>
-            <Icon name={item.icon} size={48} color={'#fff'} />
+            <View style={styles.imageWrapper}>
+              <Image source={item.image} style={styles.image} />
+            </View>
             <Text style={styles.cardText}>{item.name}</Text>
           </TouchableOpacity>
         ))}
@@ -55,7 +65,16 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: Colors.background,
     padding: 20,
-    // paddingBottom: 100,
+  },
+  image: {
+    width: 80,
+    height: 80,
+    resizeMode: 'contain',
+  },
+  imageWrapper: {
+    backgroundColor: '#fff',
+    padding: 8,
+    borderRadius: 16,
   },
   title: {
     fontSize: 32,
@@ -78,11 +97,11 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     flexWrap: 'wrap',
     justifyContent: 'space-between',
-    paddingBottom: 150,
+    marginBottom: 50,
   },
   card: {
-    width: width / 3 - 40,
-    margin: 10,
+    width: '48%',
+    marginBottom: 10,
     padding: 20,
     backgroundColor: Colors.secondary,
     borderRadius: 16,

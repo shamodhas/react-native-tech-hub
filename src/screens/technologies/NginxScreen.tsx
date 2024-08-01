@@ -10,19 +10,18 @@ const NginxScreen: React.FC = () => {
 
   return (
     <ScrollView contentContainerStyle={styles.container}>
-      <Text style={styles.title}>Nginx - not finalized</Text>
-
       <View style={styles.section}>
-        <Text style={styles.subtitle}>Overview</Text>
+        <Text style={styles.subtitle}>Introduction</Text>
         <Text style={styles.text}>
-          Nginx is a high-performance web server and reverse proxy server. It is
-          known for its stability, rich feature set, simple configuration, and
-          low resource consumption.
+          Nginx is a high-performance web server and reverse proxy server known
+          for its stability, rich feature set, and low resource consumption. It
+          is often used for serving static content, load balancing, and acting
+          as a reverse proxy for web applications.
         </Text>
       </View>
 
       <View style={styles.section}>
-        <Text style={styles.subtitle}>How to Use It</Text>
+        <Text style={styles.subtitle}>Basic Setup</Text>
 
         <View style={styles.stepContainer}>
           <View style={styles.stepHeader}>
@@ -30,10 +29,12 @@ const NginxScreen: React.FC = () => {
             <Text style={styles.bold}>Install Nginx:</Text>
           </View>
           <CodeSnippet
-            code="sudo apt install nginx"
-            onCopy={() => copyToClipboard('sudo apt install nginx')}
+            code="sudo apt update\nsudo apt install nginx"
+            onCopy={() =>
+              copyToClipboard('sudo apt update\nsudo apt install nginx')
+            }
           />
-          <Text>Install the Nginx web server.</Text>
+          <Text>Install Nginx from the official repository.</Text>
         </View>
 
         <View style={styles.stepContainer}>
@@ -45,49 +46,41 @@ const NginxScreen: React.FC = () => {
             code="sudo systemctl start nginx"
             onCopy={() => copyToClipboard('sudo systemctl start nginx')}
           />
-          <Text>Start the Nginx service.</Text>
+          <Text>Start the Nginx service to begin serving content.</Text>
         </View>
 
         <View style={styles.stepContainer}>
           <View style={styles.stepHeader}>
             <Text style={styles.stepNumber}>3.</Text>
-            <Text style={styles.bold}>Enable Nginx:</Text>
+            <Text style={styles.bold}>Enable Nginx on Boot:</Text>
           </View>
           <CodeSnippet
             code="sudo systemctl enable nginx"
             onCopy={() => copyToClipboard('sudo systemctl enable nginx')}
           />
-          <Text>Enable Nginx to start on boot.</Text>
+          <Text>Ensure Nginx starts automatically on system boot.</Text>
         </View>
 
         <View style={styles.stepContainer}>
           <View style={styles.stepHeader}>
             <Text style={styles.stepNumber}>4.</Text>
-            <Text style={styles.bold}>Check Status:</Text>
+            <Text style={styles.bold}>Check Nginx Status:</Text>
           </View>
           <CodeSnippet
             code="sudo systemctl status nginx"
             onCopy={() => copyToClipboard('sudo systemctl status nginx')}
           />
-          <Text>Check the status of the Nginx service.</Text>
+          <Text>Verify that the Nginx service is running correctly.</Text>
         </View>
       </View>
 
       <View style={styles.section}>
-        <Text style={styles.subtitle}>How It Works</Text>
-        <Text style={styles.text}>
-          Nginx uses an event-driven architecture to handle multiple connections
-          simultaneously, making it highly scalable and efficient. It can be
-          used as a web server, reverse proxy, load balancer, and HTTP cache.
-        </Text>
-      </View>
+        <Text style={styles.subtitle}>Intermediate Configuration</Text>
 
-      <View style={styles.section}>
-        <Text style={styles.subtitle}>Sample Exercises</Text>
         <View style={styles.stepContainer}>
           <View style={styles.stepHeader}>
-            <Text style={styles.stepNumber}>1.</Text>
-            <Text style={styles.bold}>Create a Server Block:</Text>
+            <Text style={styles.stepNumber}>5.</Text>
+            <Text style={styles.bold}>Configure a Virtual Host:</Text>
           </View>
           <CodeSnippet
             code="sudo nano /etc/nginx/sites-available/example.com"
@@ -97,13 +90,13 @@ const NginxScreen: React.FC = () => {
               )
             }
           />
-          <Text>Create a server block configuration file for your domain.</Text>
+          <Text>Create a virtual host configuration file for your domain.</Text>
         </View>
 
         <View style={styles.stepContainer}>
           <View style={styles.stepHeader}>
-            <Text style={styles.stepNumber}>2.</Text>
-            <Text style={styles.bold}>Enable the Site:</Text>
+            <Text style={styles.stepNumber}>6.</Text>
+            <Text style={styles.bold}>Enable the Virtual Host:</Text>
           </View>
           <CodeSnippet
             code="sudo ln -s /etc/nginx/sites-available/example.com /etc/nginx/sites-enabled/"
@@ -113,12 +106,14 @@ const NginxScreen: React.FC = () => {
               )
             }
           />
-          <Text>Enable the new site by creating a symbolic link.</Text>
+          <Text>
+            Link the configuration file to the sites-enabled directory.
+          </Text>
         </View>
 
         <View style={styles.stepContainer}>
           <View style={styles.stepHeader}>
-            <Text style={styles.stepNumber}>3.</Text>
+            <Text style={styles.stepNumber}>7.</Text>
             <Text style={styles.bold}>Test Configuration:</Text>
           </View>
           <CodeSnippet
@@ -130,14 +125,102 @@ const NginxScreen: React.FC = () => {
 
         <View style={styles.stepContainer}>
           <View style={styles.stepHeader}>
-            <Text style={styles.stepNumber}>4.</Text>
+            <Text style={styles.stepNumber}>8.</Text>
             <Text style={styles.bold}>Reload Nginx:</Text>
           </View>
           <CodeSnippet
             code="sudo systemctl reload nginx"
             onCopy={() => copyToClipboard('sudo systemctl reload nginx')}
           />
-          <Text>Reload Nginx to apply changes.</Text>
+          <Text>Apply changes by reloading Nginx.</Text>
+        </View>
+      </View>
+
+      <View style={styles.section}>
+        <Text style={styles.subtitle}>Advanced Features</Text>
+
+        <View style={styles.stepContainer}>
+          <View style={styles.stepHeader}>
+            <Text style={styles.stepNumber}>9.</Text>
+            <Text style={styles.bold}>Set Up SSL with Let's Encrypt:</Text>
+          </View>
+          <CodeSnippet
+            code="sudo apt install certbot python3-certbot-nginx\nsudo certbot --nginx"
+            onCopy={() =>
+              copyToClipboard(
+                'sudo apt install certbot python3-certbot-nginx\nsudo certbot --nginx',
+              )
+            }
+          />
+          <Text>
+            Install Certbot and configure SSL certificates with Let's Encrypt.
+          </Text>
+        </View>
+
+        <View style={styles.stepContainer}>
+          <View style={styles.stepHeader}>
+            <Text style={styles.stepNumber}>10.</Text>
+            <Text style={styles.bold}>Configure Load Balancing:</Text>
+          </View>
+          <CodeSnippet
+            code="sudo nano /etc/nginx/nginx.conf"
+            onCopy={() => copyToClipboard('sudo nano /etc/nginx/nginx.conf')}
+          />
+          <Text>
+            Set up load balancing in the main Nginx configuration file.
+          </Text>
+        </View>
+      </View>
+
+      <View style={styles.section}>
+        <Text style={styles.subtitle}>Sample Exercises</Text>
+
+        <View style={styles.stepContainer}>
+          <View style={styles.stepHeader}>
+            <Text style={styles.stepNumber}>1.</Text>
+            <Text style={styles.bold}>Configure Reverse Proxy:</Text>
+          </View>
+          <CodeSnippet
+            code="sudo nano /etc/nginx/sites-available/reverse-proxy\n# Add proxy_pass configuration"
+            onCopy={() =>
+              copyToClipboard(
+                'sudo nano /etc/nginx/sites-available/reverse-proxy\n# Add proxy_pass configuration',
+              )
+            }
+          />
+          <Text>Set up Nginx as a reverse proxy for a web application.</Text>
+        </View>
+
+        <View style={styles.stepContainer}>
+          <View style={styles.stepHeader}>
+            <Text style={styles.stepNumber}>2.</Text>
+            <Text style={styles.bold}>Create a Custom Error Page:</Text>
+          </View>
+          <CodeSnippet
+            code="sudo nano /etc/nginx/sites-available/example.com\n# Add error_page directive"
+            onCopy={() =>
+              copyToClipboard(
+                'sudo nano /etc/nginx/sites-available/example.com\n# Add error_page directive',
+              )
+            }
+          />
+          <Text>Customize error pages for your website.</Text>
+        </View>
+
+        <View style={styles.stepContainer}>
+          <View style={styles.stepHeader}>
+            <Text style={styles.stepNumber}>3.</Text>
+            <Text style={styles.bold}>Monitor Nginx Logs:</Text>
+          </View>
+          <CodeSnippet
+            code="sudo tail -f /var/log/nginx/access.log\nsudo tail -f /var/log/nginx/error.log"
+            onCopy={() =>
+              copyToClipboard(
+                'sudo tail -f /var/log/nginx/access.log\nsudo tail -f /var/log/nginx/error.log',
+              )
+            }
+          />
+          <Text>Monitor Nginx access and error logs for troubleshooting.</Text>
         </View>
       </View>
     </ScrollView>
