@@ -12,9 +12,9 @@ const AppNavigator: React.FC = () => {
   return (
     <NavigationContainer>
       <Stack.Navigator screenOptions={{headerShown: false}}>
-        {/* <Stack.Screen name="Welcome" component={WelcomeScreen} />
+        <Stack.Screen name="Welcome" component={WelcomeScreen} />
         <Stack.Screen name="Login" component={LoginScreen} />
-        <Stack.Screen name="Signup" component={SignupScreen} /> */}
+        <Stack.Screen name="Signup" component={SignupScreen} />
         <Stack.Screen name="Main" component={BottomTabsNavigator} />
       </Stack.Navigator>
     </NavigationContainer>
