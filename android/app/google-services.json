@@ -1,0 +1,67 @@
+{
+  "project_info": {
+    "project_number": "1093738942825",
+    "project_id": "olo-customer-app",
+    "storage_bucket": "olo-customer-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1093738942825:android:a820c762fdc3f1bb59edf8",
+        "android_client_info": {
+          "package_name": "ae.olotech.olo.customer"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAqZFGwVaLiIEQzN5QSnj22tTvI9tqB-QI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1093738942825:android:1258791a5761fafe59edf8",
+        "android_client_info": {
+          "package_name": "cins.skns"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAqZFGwVaLiIEQzN5QSnj22tTvI9tqB-QI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1093738942825:android:034cf4ce13d74fb759edf8",
+        "android_client_info": {
+          "package_name": "com.olomerchantapp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAqZFGwVaLiIEQzN5QSnj22tTvI9tqB-QI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
